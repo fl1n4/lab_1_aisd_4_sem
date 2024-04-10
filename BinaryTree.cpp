@@ -1,5 +1,5 @@
 #include "BinaryTree.h"
-#include "iostream"
+#include <iostream>
 
 BinaryTree::Node* BinaryTree::deepCopy(Node* node) {
     if (node == nullptr) {
@@ -18,7 +18,9 @@ bool BinaryTree::destroyTree(Node* node) {
         destroyTree(node->left);
         destroyTree(node->right);
         delete node;
+        return true; // Успешно уничтожено
     }
+    return false; // Уже пустое дерево или узел был nullptr
 }
 
 bool BinaryTree::insertRecursive(Node*& node, int key) {
