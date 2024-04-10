@@ -103,6 +103,14 @@ BinaryTree::Node* BinaryTree::findMinElement(Node* node) {
     return node;
 }
 
+void BinaryTree::fillVector(Node* node, std::vector<int>& result) {
+    if (node != nullptr) {
+        fillVector(node->left, result);
+        result.push_back(node->info);
+        fillVector(node->right, result);
+    }
+}
+
 BinaryTree::BinaryTree() : root(nullptr) {}
 
 BinaryTree::BinaryTree(const BinaryTree& other) {

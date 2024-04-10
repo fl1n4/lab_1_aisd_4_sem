@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 
 class BinaryTree {
 private:
@@ -28,4 +29,6 @@ public:
     void inorderPrint(Node* node);
     bool containsRecursive(Node* node, int key);
     bool eraseRecursive(Node*& node, int key);
+    Node* getRoot() const {return root;}
+    void fillVector(Node* node, std::vector<int>& result);
 };
