@@ -18,9 +18,9 @@ bool BinaryTree::destroyTree(Node* node) {
         destroyTree(node->left);
         destroyTree(node->right);
         delete node;
-        return true; // Успешно уничтожено
+        return true;
     }
-    return false; // Уже пустое дерево или узел был nullptr
+    return false;
 }
 
 bool BinaryTree::insertRecursive(Node*& node, int key) {
@@ -28,14 +28,13 @@ bool BinaryTree::insertRecursive(Node*& node, int key) {
         node = new Node(key);
         return true;
     }
-    else if (key < node->info) {
+    if (key < node->info) {
         return insertRecursive(node->left, key);
     }
-    else if (key > node->info) {
+    else if  (key > node->info) 
+    {
+
         return insertRecursive(node->right, key);
-    }
-    else {
-        return false;
     }
 }
 
@@ -101,14 +100,6 @@ BinaryTree::Node* BinaryTree::findMinElement(Node* node) {
         node = node->left;
     }
     return node;
-}
-
-void BinaryTree::fillVector(Node* node, std::vector<int>& result) {
-    if (node != nullptr) {
-        fillVector(node->left, result);
-        result.push_back(node->info);
-        fillVector(node->right, result);
-    }
 }
 
 BinaryTree::BinaryTree() : root(nullptr) {}

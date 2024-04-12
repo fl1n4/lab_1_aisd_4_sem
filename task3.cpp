@@ -3,25 +3,33 @@
 #include "BinaryTree.h"
 
 std::vector<int> getUniqueElements(const std::vector<int>& input) {
-    std::vector<int> temp;
     std::vector<int> result;
-    BinaryTree tree;
-    for (int element : input) {
-        bool flag = tree.insert(element);
-        if (!flag) {
-            temp.push_back(element);
+    BinaryTree tree_unique;
+    BinaryTree tree_duplicates;
+
+    for (auto& item : input)
+    {
+        if (!tree_unique.contains(item))
+        {
+            tree_unique.insert(item);
+        }
+        else
+        {
+            tree_duplicates.insert(item);
         }
     }
-    for (int element : temp)
+    for (auto& item : input )
     {
-        tree.erase(element);
+        if (!tree_duplicates.contains(item))
+        {
+            result.push_back(item);
+        }
     }
-    tree.fillVector(tree.getRoot(), result);
     return result;
 }
 
 int main() {
-    std::vector<int> input = { 3, 2, 2, 4};
+    std::vector<int> input = { 3, 2, 2, 2, 4};
 
     std::vector<int> uniqueElements = getUniqueElements(input);
 

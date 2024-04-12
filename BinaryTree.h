@@ -10,6 +10,14 @@ private:
         Node(const int k) : info(k), left(nullptr), right(nullptr) {}
     };
     Node* root;
+    Node* deepCopy(Node* node);
+    Node* findMinElement(Node* node);
+    bool destroyTree(Node* node);
+    bool insertRecursive(Node*& node, int key);
+    void inorderPrint(Node* node);
+    bool containsRecursive(Node* node, int key);
+    bool eraseRecursive(Node*& node, int key);
+
 
 public:
     BinaryTree();
@@ -21,14 +29,4 @@ public:
     bool insert(int key);
     bool contains(int key);
     bool erase(int key);
-
-    Node* deepCopy(Node* node);
-    Node* findMinElement(Node* node);
-    bool destroyTree(Node* node);
-    bool insertRecursive(Node*& node, int key);
-    void inorderPrint(Node* node);
-    bool containsRecursive(Node* node, int key);
-    bool eraseRecursive(Node*& node, int key);
-    Node* getRoot() const {return root;}
-    void fillVector(Node* node, std::vector<int>& result);
 };
